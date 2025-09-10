@@ -1,0 +1,14 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+MyMa1 = DefAvgVC(Close, 5);							// see AdvancedSamples2::AdvancedSampleVC4() method in "Advanced Samples2.cpp" for source
+Plot(MyMa1, "MyMa1", colorBlue, styleThick);
+
+MyMa2 = DefAvgVC(Close);	//default period is 20
+Plot(MyMa2, "MyMa2", colorRed, styleThick);
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

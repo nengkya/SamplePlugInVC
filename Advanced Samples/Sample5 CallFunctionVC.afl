@@ -1,0 +1,14 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+MyCallMa1 = CallMaVC(Close, 5);							// see AdvancedSamples2::AdvancedSampleVC5() method in "Advanced Samples2.cpp" for source
+Plot(MyCallMa1, "MyCallMa1", colorBlue, styleThick);
+
+MyCallMa2 = CallMaVC(Close);	//default period is 20
+Plot(MyCallMa2, "MyCallMa2", colorRed, styleThick);
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

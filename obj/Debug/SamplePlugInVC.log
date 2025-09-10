@@ -1,0 +1,23 @@
+﻿cl : command line  warning D9035: option 'clr:safe' has been deprecated and will be removed in a future release
+  HaGa Sample.cpp
+  SamplePlugInVC.vcxproj -> C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.Samples.SamplePlugInVC.dll
+  ***** Updating AmiBroker folders *****
+  ***** Deploying project output to "C:\Program Files\AmiBroker\".
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.Samples.SamplePlugInVC.dll -> C:\Program Files\AmiBroker\.NET for AmiBroker\Assemblies\AmiBroker.Samples.SamplePlugInVC.dll
+  1 File(s) copied
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.Samples.SamplePlugInVC.pdb -> C:\Program Files\AmiBroker\.NET for AmiBroker\Assemblies\AmiBroker.Samples.SamplePlugInVC.pdb
+  1 File(s) copied
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Advanced Samples\Sample2 ABHostVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Advanced Samples\Sample2 ABHostVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Advanced Samples\Sample3 ABParameterVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Advanced Samples\Sample3 ABParameterVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Advanced Samples\Sample4 Default ParamVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Advanced Samples\Sample4 Default ParamVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Advanced Samples\Sample5 CallFunctionVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Advanced Samples\Sample5 CallFunctionVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample1 IndicatorVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample1 IndicatorVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample2 Indicator with return valueVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample2 Indicator with return valueVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample3 Indicator with return value and parametersVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample3 Indicator with return value and parametersVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample4 Accessing AFL variablesVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample4 Accessing AFL variablesVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample5 Loop PerformanceVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample5 Loop PerformanceVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample6 ExceptionsVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample6 ExceptionsVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample7 BacktestVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample7 BacktestVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample8 SignalsVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample8 SignalsVC.afl
+  C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\Basic Samples\Sample9 StatsVC.afl -> C:\Program Files\AmiBroker\Formulas\.NET for AmiBroker\SamplePlugInVC\Basic Samples\Sample9 StatsVC.afl
+  13 File(s) copied

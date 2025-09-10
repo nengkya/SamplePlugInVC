@@ -1,0 +1,19 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+// this is an input var for the .Net plug-in
+Period = Param("Ma period", 20, 3, 50, 1);
+
+Result = BasicSampleVC6(Period);
+
+if (Result) //if no exception...
+{
+	// this line will NOT be executed as failure is indicated
+	Plot(MyEma, "MyEma", colorRed, styleLine);
+}
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

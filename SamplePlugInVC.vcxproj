@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{19F257E4-FD38-43DE-BFB3-920558F6BCE8}</ProjectGuid>
+    <RootNamespace>SamplePlugInVC</RootNamespace>
+    <Keyword>ManagedCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>Safe</CLRSupport>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>Safe</CLRSupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25123.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ReferencePath>$(DotNetForAB_Reference)\.NET for AmiBroker\Assemblies;$(ReferencePath)</ReferencePath>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>AmiBroker.Samples.$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ReferencePath>$(DotNetForAB_Reference)\.NET for AmiBroker\Assemblies;$(ReferencePath)</ReferencePath>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>AmiBroker.Samples.$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <OutputFile>$(OutDir)AmiBroker.Samples.$(ProjectName).dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>@ECHO ***** Updating AmiBroker folders *****
+IF "%DotNetForAB_Home%" EQU "" IF "%DotNetForABx64_Home%" EQU "" (ECHO "ERROR: Cannot deploy project output to AmiBroker folders. Missing environment variables." &amp; ECHO . &amp; EXIT)
+
+IF "%DotNetForAB_Home%" NEQ "" (
+ECHO ***** Deploying project output to "%DotNetForAB_Home%".
+xcopy /Y /I /F "$(TargetDir)$(TargetName).dll" "%DotNetForAB_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F "$(TargetDir)$(TargetName).pdb" "%DotNetForAB_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F /S "$(ProjectDir)*.afl" "%DotNetForAB_Formulas%\.NET for AmiBroker\$(ProjectName)"
+)
+
+IF "%DotNetForABx64_Home%" NEQ "" (
+ECHO ***** Deploying project output to "%DotNetForABx64_Home%".
+xcopy /Y /I /F "$(TargetDir)$(TargetName).dll" "%DotNetForABx64_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F "$(TargetDir)$(TargetName).pdb" "%DotNetForABx64_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F /S "$(ProjectDir)*.afl" "%DotNetForABx64_Formulas%\.NET for AmiBroker\$(ProjectName)"
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>@ECHO ***** Updating AmiBroker folders *****
+IF "%DotNetForAB_Home%" EQU "" IF "%DotNetForABx64_Home%" EQU "" (ECHO "ERROR: Cannot deploy project output to AmiBroker folders. Missing environment variables." &amp; ECHO . &amp; EXIT)
+
+IF "%DotNetForAB_Home%" NEQ "" (
+ECHO ***** Deploying project output to "%DotNetForAB_Home%".
+xcopy /Y /I /F "$(TargetDir)$(TargetName).dll" "%DotNetForAB_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F "$(TargetDir)$(TargetName).pdb" "%DotNetForAB_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F /S "$(ProjectDir)*.afl" "%DotNetForAB_Formulas%\.NET for AmiBroker\$(ProjectName)"
+)
+
+IF "%DotNetForABx64_Home%" NEQ "" (
+ECHO ***** Deploying project output to "%DotNetForABx64_Home%".
+xcopy /Y /I /F "$(TargetDir)$(TargetName).dll" "%DotNetForABx64_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F "$(TargetDir)$(TargetName).pdb" "%DotNetForABx64_Home%\.NET for AmiBroker\Assemblies"
+xcopy /Y /I /F /S "$(ProjectDir)*.afl" "%DotNetForABx64_Formulas%\.NET for AmiBroker\$(ProjectName)"
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="AmiBroker.PlugInHost">
+      <HintPath>..\..\..\..\Assemblies\AmiBroker.PlugInHost.dll</HintPath>
+    </Reference>
+    <Reference Include="AmiBroker.Utils">
+      <HintPath>..\..\..\..\Assemblies\AmiBroker.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Advanced Samples2.cpp" />
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Basic Samples.cpp" />
+    <ClCompile Include="HaGa Sample.cpp" />
+    <ClCompile Include="Stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Advanced Samples2.h" />
+    <ClInclude Include="Basic Samples.h" />
+    <ClInclude Include="HaGa Sample.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Advanced Samples\Sample2 ABHostVC.afl" />
+    <None Include="Advanced Samples\Sample3 ABParameterVC.afl" />
+    <None Include="Advanced Samples\Sample4 Default ParamVC.afl" />
+    <None Include="Advanced Samples\Sample5 CallFunctionVC.afl" />
+    <None Include="Basic Samples\Sample1 IndicatorVC.afl" />
+    <None Include="Basic Samples\Sample2 Indicator with return valueVC.afl" />
+    <None Include="Basic Samples\Sample3 Indicator with return value and parametersVC.afl" />
+    <None Include="Basic Samples\Sample4 Accessing AFL variablesVC.afl" />
+    <None Include="Basic samples\Sample5 Loop PerformanceVC.afl" />
+    <None Include="Basic Samples\Sample6 ExceptionsVC.afl" />
+    <None Include="Basic Samples\Sample7 BacktestVC.afl" />
+    <None Include="Basic Samples\Sample8 SignalsVC.afl" />
+    <None Include="Basic Samples\Sample9 StatsVC.afl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

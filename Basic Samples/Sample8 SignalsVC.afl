@@ -1,0 +1,40 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+MaPeriod = 20;
+MyTypicalPrice = (High + Low + 2 * Close) / 4;
+
+MyMa = MA(MyTypicalPrice, MaPeriod);
+Plot(MyMa, "MyMa", colorBlue, styleThick);
+
+MyFastEma = EMA(Close, 5);
+Plot(MyFastEma, "Ema5", IIf(MyMa < MyFastEma, colorDarkGreen, colorBrown), styleLine);
+
+PlotOHLC(Open, High, Low, Close, "Close", colorBlack, styleCandle);
+
+Buy = Cover = Cross(MyFastEma, MyMa);
+Short = Sell = Cross(MyMa, MyFastEma);
+
+BuyPrice = ShortPrice = Open;
+SellPrice = CoverPrice = Close;
+
+PlotShapes(IIf(Buy, shapeUpArrow, shapeNone), colorGreen, 0, BuyPrice);
+PlotShapes(IIf(Sell, shapeDownArrow, shapeNone), colorRed, 0, SellPrice);
+
+PlotShapes(IIf(Short, shapeHollowDownArrow, shapeNone), colorRed, 0, ShortPrice);
+PlotShapes(IIf(Cover, shapeHollowUpArrow, shapeNone), colorGreen, 0, CoverPrice);
+
+SlippageLong =Param("Slippage (Long)", 1, 0, 10, 1);
+SlippageShort =Param("Slippage (Short)", 3, 0, 10, 1);
+SlippageTickSize =Param("Slippage Tick Size)", 0.01, 0, 10, 0.0001);
+
+SetOption("UseCustomBacktestProc", True );
+SetOption("PriceBoundChecking", False);
+
+BasicSampleVC8();
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

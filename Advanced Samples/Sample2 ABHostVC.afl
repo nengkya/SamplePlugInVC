@@ -1,0 +1,16 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+Period = Param("Period", 10, 5, 50, 5);
+
+// getting the value calculated by the plug-in method using the input parameters from the AFL
+AdvancedSampleVC2(Period);					// see AdvancedSamples2::AdvancedSampleVC2() method in "Advanced Samples2.cpp" for source
+
+//MySlowEma is set using ABHost
+Plot(MySlowMa , "MySlowMa ", colorRed,  styleLine);
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

@@ -1,0 +1,40 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly AmiBroker.Samples.SamplePlugInVC, Version=6.20.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly AmiBroker.PlugInHost, Version=6.90.0.0, Culture=neutral, PublicKeyToken=c0d4fd12d3adc8e5: 
+	hash=None, flags=None
+Assembly AmiBroker.Utils, Version=1.1.0.0, Culture=neutral, PublicKeyToken=c0d4fd12d3adc8e5: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class AmiBroker.Samples.AdvancedSamples2: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    AdvancedSampleVC2(Single): PrivateScope, Public, Static, HideBySig
+    AdvancedSampleVC3(ATArgList): PrivateScope, Public, Static, HideBySig
+    AdvancedSampleVC4(ATArgList): PrivateScope, Public, Static, HideBySig
+    AdvancedSampleVC5(ATArgList): PrivateScope, Public, Static, HideBySig
+    AdvancedSampleVC6(ATArgList): PrivateScope, Public, Static, HideBySig
+Class AmiBroker.Samples.BasicSamples: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :AmiBroker.IndicatorBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    BasicSampleVC1(): PrivateScope, Public, HideBySig
+    BasicSampleVC2(): PrivateScope, Public, HideBySig
+    BasicSampleVC3(ATArray, Single): PrivateScope, Public, HideBySig
+    BasicSampleVC4(): PrivateScope, Public, HideBySig
+    BasicSampleVC5(Single): PrivateScope, Public, HideBySig
+    BasicSampleVC6(Single): PrivateScope, Public, HideBySig
+    BasicSampleVC7(): PrivateScope, Public, HideBySig
+    BasicSampleVC8(): PrivateScope, Public, HideBySig
+    BasicSampleVC9(): PrivateScope, Public, HideBySig
+    BasicSampleVC10(Single, Single): PrivateScope, Public, HideBySig
+    BasicSampleVC11(Single, Single): PrivateScope, Public, HideBySig
+Class AmiBroker.Samples.HaGaSampleClass: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :AmiBroker.IndicatorBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    HaGaSample(): PrivateScope, Public, HideBySig

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19F257E4-FD38-43DE-BFB3-920558F6BCE8}|SamplePlugInVC.vcxproj|C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\Basic Samples.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{19F257E4-FD38-43DE-BFB3-920558F6BCE8}|SamplePlugInVC.vcxproj|solutionrelative:Basic Samples.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19F257E4-FD38-43DE-BFB3-920558F6BCE8}|SamplePlugInVC.vcxproj|C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\HaGa Sample.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{19F257E4-FD38-43DE-BFB3-920558F6BCE8}|SamplePlugInVC.vcxproj|solutionrelative:HaGa Sample.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HaGa Sample.cpp",
+              "DocumentMoniker": "C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\HaGa Sample.cpp",
+              "RelativeDocumentMoniker": "HaGa Sample.cpp",
+              "ToolTip": "C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\HaGa Sample.cpp",
+              "RelativeToolTip": "HaGa Sample.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-10T16:01:46.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Basic Samples.cpp",
+              "DocumentMoniker": "C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\Basic Samples.cpp",
+              "RelativeDocumentMoniker": "Basic Samples.cpp",
+              "ToolTip": "C:\\Program Files\\AmiBroker\\.NET for AmiBroker\\Samples\\Sources\\AFL Plug-ins\\SamplePlugInVC\\Basic Samples.cpp",
+              "RelativeToolTip": "Basic Samples.cpp",
+              "ViewState": "AgIAAGEBAAAAAAAAAAAUwHQBAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-10T16:01:31.934Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

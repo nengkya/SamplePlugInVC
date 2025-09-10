@@ -1,0 +1,5 @@
+C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.PlugInHost.dll
+C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.Utils.dll
+C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\bin\Debug\AmiBroker.PlugInHost.dll.config
+C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\obj\Debug\SamplePlugInVC.vcxproj.AssemblyReference.cache
+C:\Program Files\AmiBroker\.NET for AmiBroker\Samples\Sources\AFL Plug-ins\SamplePlugInVC\obj\Debug\SamplePl.3465EDCE.Up2Date

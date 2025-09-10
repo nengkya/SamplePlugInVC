@@ -1,0 +1,40 @@
+/*
+ * Copyright 2009 J.T. All rights reserved.
+ *
+ * NOTICE TO USER:
+ *
+ * Users and possessors of this source code are hereby granted a nonexclusive, 
+ * royalty-free license to use this code in individual and commercial software.
+ *
+ * J.T. MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE
+ * CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR
+ * IMPLIED WARRANTY OF ANY KIND. J.T. DISCLAIMS ALL WARRANTIES WITH
+ * REGARD TO THIS SOURCE CODE, INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
+ * IN NO EVENT SHALL J.T. BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL,
+ * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+ * OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ * OR OTHER TORTIOUS ACTION,  ARISING OUT OF OR IN CONNECTION WITH THE USE
+ * OR PERFORMANCE OF THIS SOURCE CODE.
+ *
+ * Any use of this source code in individual and commercial software must
+ * include the above Disclaimer in the user documentation and internal comments
+ * to the code.
+ *
+ */
+
+/*
+ *
+ * File version:
+ * $Modtime: 12/14/10 9:33p $ 
+ *
+ */
+
+Period = Param("Period", 10, 5, 50, 5);
+
+// getting the value calculated by the plug-in method using the input parameters from the AFL
+MySlowMa = BasicSampleVC3(Close, Period);					// see BasicSampleVC3() method in "Basic Samples.cpp" for source
+
+Plot(MySlowMa , "MySlowMa ", colorRed,  styleLine);
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

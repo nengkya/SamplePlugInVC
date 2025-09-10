@@ -1,0 +1,153 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+// Compare the execution time and relative speed of calculating MA in many different ways:
+// MA calculation								 Execution time  Speed
+// -------------------------------------------------------------------
+// AFL loop					                         ~2451.9 ms    1.0
+// VB Basic loop w/ indexer				  		      ~143.8 ms   17.1
+// VB Advanced loop	w/ indexer						   ~62.4 ms   39.3
+// C# Basic loop w/ indexer							  ~121.8 ms   20.1
+// C# Advanced loop	w/ indexer						   ~42.3 ms   58.0
+// C# Advanced loop w/ pointers						   ~26.9 ms   91.1
+// C# Advanced loop w/ optimized pointers	           ~24.5 ms  100.3
+// C++/CLI Basic loop w/ indexer				      ~123.3 ms   19.9
+// C++/CLI Advanced loop w/ indexer					   ~61.4 ms   39.9
+// C++ (Native win32) optimzed loop					   ~22.6 ms  108.4
+// ASM x64 (Scalar SSE) loop w/ opt. reg use		    ~7.0 ms  348.7
+// ASM x64 (Vector AVX) loop w/ opt. reg use		    ~2.3 ms 1071.9
+// -------------------------------------------------------------------
+//
+// (Windows 10 Pro 64 bit / AmiBroker 6.20 64 bit / Intel I5-3570 3.4GHz / 8GB / 496488 bars / MA period: 20)
+// (AmiBroker-Tools-Preferences...-AFL-Multithreaded chart execution is off!)
+// (For testing, all bars are used from your current database! So use a database with lots of datapoints to get more accurate test results.)
+
+SetBarsRequired(-2, -2);
+
+MaPeriod = Param("Period", 20, 5, 50, 5);
+
+GetPerformanceCounter(1);
+
+tempSum = 0;
+
+// result array (not required to be declared in AFL)
+// MyMaAFL = 0;
+
+// set null values at the beginning of the array
+for (i = 0; i < MaPeriod - 1 AND i < BarCount; i++)
+	MyMaAFL[i] = Null;
+
+// calculate the average for each bar
+for (i = MaPeriod - 1; i < BarCount; i++)
+{
+    // clear temporary result
+	tempSum = 0;
+
+    // inner loop to sum bar data
+	for (j = 0; j < MaPeriod; j++)
+   		tempSum = tempSum + Close[i-j];
+
+    // saving calculated value to array
+	MyMaAFL[i] = tempSum / MaPeriod;
+}
+tickAFL = GetPerformanceCounter(1);
+
+MyMaVB = LoopSampleVB(MaPeriod);				// see BasicSampleVB5() method in "Basic Samples.vb" for source
+tickVB = GetPerformanceCounter(1);
+
+MyMaAVB = AdvancedLoopSampleVB(MaPeriod);		// see AdvancedSampleVB6() method in "Advanced Samples2.vb" for source
+tickAVB = GetPerformanceCounter(1);
+
+MyMaCS = LoopSampleCS(MaPeriod);				// see BasicSampleCS5() method in "Basic Samples.cs" for source
+tickCS = GetPerformanceCounter(1);
+
+MyMaACS = AdvancedLoopSampleCS(MaPeriod);		// see AdvancedSampleCS6() method in "Advanced Samples2.cs" for source
+tickACS = GetPerformanceCounter(1);
+
+MyMaUCS1 = UnsafeLoopSampleCS1(MaPeriod);		// see UnsafeSample1() method in "Unsafe Samples.cs" for source
+tickUCS1 = GetPerformanceCounter(1);
+
+MyMaUCS2 = UnsafeLoopSampleCS2(MaPeriod);		// see UnsafeSample2() method in "Unsafe Samples.cs" for source
+tickUCS2 = GetPerformanceCounter(1);
+
+MyMaVC = LoopSampleVC(MaPeriod);				// see BasicSamples::BasicSampleVC5() method in "Basic Samples.cpp" for source
+tickVC = GetPerformanceCounter(1);
+
+MyMaAVC = AdvancedLoopSampleVC(MaPeriod);		// see AdvancedSamples2::AdvancedSampleVC6() method in "Advanced Samples2.cpp" for source
+tickAVC = GetPerformanceCounter(1);
+
+//MyMaCPP = LoopSampleCPP(MaPeriod);			// see LoopSampleCPP() method in "Functions.cpp" for source
+//tickCPP = GetPerformanceCounter(1);
+
+//MyMaASM1 = LoopSampleAsmScalar(MaPeriod);		// see LoopSampleAsmScalar() & MaLoopScalar() methods in "Functions.cpp" & "FunctionsASM.asm64" for source
+//tickASM1 = GetPerformanceCounter(1);
+
+//MyMaASM2 = LoopSampleAsmVector(MaPeriod);		// see LoopSampleAsmVector() & MaLoopVector() methods in "Functions.cpp" & "FunctionsASM.asm64" for source
+//tickASM2 = GetPerformanceCounter(1);
+
+
+Title = _SECTION_NAME();
+
+YTracePrintMessage("Turn off multithreaded chart execution (Tools-Preferences...-AFL) and use >50000 bars for more realistic results!", 12, colorYellow);
+YTracePrintMessage("", 8);
+YTracePrintMessage("Loop performance tests using " + NumToStr(BarCount, 1.0) + " bars:");
+YTracePrintMessage("", 8);
+
+row = 120;
+rowInc = 20;
+col1  = 1;
+col2 = 550;
+col3 = 700;
+
+GfxSelectFont("Courier New", 10, 700);
+GfxSetTextAlign(0);
+GfxTextOut("Test case", col1, row);
+GfxSetTextAlign(2);
+GfxTextOut("Execution time", col2, row);
+GfxTextOut("Relative speed", col3, row);
+row += rowInc;
+
+function PrintResult(text, result)
+{
+	GfxSetTextAlign(0);
+	GfxTextOut(text, col1, row);
+	GfxSetTextAlign(2);
+	GfxTextOut(StrFormat("%.3f ms", result), col2, row);
+	GfxTextOut(StrFormat("%.1f", tickAFL/result), col3, row);
+	row += rowInc;
+}
+
+PrintResult("AFL loop", tickAFL);
+PrintResult("VB Basic loop w/ indexer", tickVB);
+PrintResult("VB Advanced loop w/ indexer", tickAVB);
+PrintResult("C# Basic loop w/ indexer", tickCS);
+PrintResult("C# Advanced loop w/ indexer", tickACS);
+PrintResult("C# Advanced loop w/ pointer", tickUCS1);
+PrintResult("C# Advanced loop w/ opt. pointer", tickUCS2);
+PrintResult("C++/CLI Basic loop w/ indexer", tickVC);
+PrintResult("C++/CLI Advanced loop w/ indexer", tickAVC);
+//PrintResult("C++ (Native) loop w/ opt. pointer", tickCPP);
+//PrintResult("ASM x64 (Scalar SSE) loop w/ opt. reg use", tickASM1);
+//PrintResult("ASM x64 (Vector SSE) loop w/ opt. reg use", tickASM2);
+
+// plot the calculated average
+Plot(MyMaAFL, "MyMaAFL", colorBlue, styleLine);
+
+/* 
+// They are all the same. They are here for result testing only.
+Plot(MyMaCS, "MyMaVB", colorBlue, styleLine);
+Plot(MyMaACS, "MyMaAVB", colorBlue, styleLine);
+Plot(MyMaCS, "MyMaCS", colorBlue, styleLine);
+Plot(MyMaACS, "MyMaACS", colorBlue, styleLine);
+Plot(MyMaUCS1, "MyMaUCS1", colorBlue, styleLine);
+Plot(MyMaUCS2, "MyMaUCS2", colorBlue, styleLine);
+Plot(MyMaVC, "MyMaVC", colorBlue, styleLine);
+Plot(MyMaAVC, "MyMaAVC", colorBlue, styleLine);
+//Plot(MyMaCPP, "MyMaCPP", colorBlue, styleLine);
+//Plot(MyMaASM, "MyMaASM1", colorBlue, styleLine);
+//Plot(MyMaASM, "MyMaASM2", colorBlue, styleLine);
+*/

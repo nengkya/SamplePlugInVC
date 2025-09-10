@@ -1,0 +1,10 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+BasicSampleVC9();
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);

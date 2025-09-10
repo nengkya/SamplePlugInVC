@@ -1,0 +1,28 @@
+//////////////////////////////////////////////////////////////
+//
+// Please, read Samples.pdf on how to use this sample
+// (.NET for AmiBroker\Samples folder)
+//
+//////////////////////////////////////////////////////////////
+
+MaPeriod = Param("MA period", 20, 10, 50, 5);
+EmaPeriod = Param("EMA period", 5, 2, 20, 1);
+
+// plug-in method reads AFL variables (MaPeriod and EmaPeriod)
+Result = BasicSampleVC4();			// see BasicSampleVC4() method in "Basic Samples.cpp" for source
+
+// if plug-in method has finished successfully
+if (Result)
+{
+	// plotting the results of the plug-in mehthod
+	Plot(MyMa, "MyMa", colorBlue, styleThick);
+	Plot(MyEma, "MyEma", IIf(MyMa < MyEma, colorDarkGreen, colorBrown), styleLine);
+	Plot(MyDiff, "MyDiff", colorRed,  styleHistogram | styleOwnScale, -1, 1);
+}
+else
+{
+	// show message of invalid input
+	YTracePrintMessage("Invalid input.", 20, colorRed);
+}
+
+Title = _SECTION_NAME() +", Number of bars:" + NumToStr(BarCount, 1.0);
