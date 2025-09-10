@@ -1,0 +1,68 @@
+_SECTION_BEGIN("_SECTION_BEGIN(HaGaSample)");
+
+/*calling the plug-in method*/
+HaGaSample(); /*see BasicSampleVC1() method in "Basic Samples.cpp" for source*/
+
+/*NumToStr(NUMBER, format = 1.3, separator = True, roundAndPad = False)*/
+Title = _SECTION_NAME() +", Number of bars : " + NumToStr(BarCount, 50);
+
+/*initialize a variable to track the highest high*/
+HH = High[0]; /*start by assuming the first bar's high is the highest*/
+
+/*loop through every single bar to find the true highest high*/
+for (i = 1; i < BarCount; i++)
+{
+    if (High[i] > HH)
+    {
+        HH = High[i];
+    }
+}
+/*HH now holds the highest value. Plot it as a horizontal line*/
+Plot(HH, "All-Time High", colorGreen, styleLine | styleDots);
+
+/*Plot the price for reference*/
+Plot(Close, "Price", colorBlue);
+
+/*calculate a 10-period simple moving average (SMA) of the closing prices*/
+SMA10 = MA(Close, 10);
+Plot(SMA10, "SMA10", colorYellow);
+
+/*
+in AmiBroker Formula Language (AFL), Ref() is one of the most essential and frequently used functions. its purpose is to reference a past or future value of an array
+the name is short for "Reference"
+the Core Concept: Shifting Data in Time
+think of your price data as a timeline :
+the most recent bar is now
+the bar before that is yesterday (or one period ago)
+the bar before that is two days ago, and so on
+Ref() allows you to "look back" or "look ahead" in this timeline to get a value from a different point in time
+syntax
+Ref(array, period)
+array: This is the data series you want to reference. It's almost always a price array like Close, Open, or an indicator array like RSI(), MACD().
+period: this specifies how many bars to shift
+a negative number looks back into the past (e.g., -1 is the previous bar)
+a positive number looks forward into the future (e.g., +1 is the next bar). (use with extreme caution!)
+0 refers to the current bar.
+how to use it: examples
+looking back (most common use case)
+This is used to compare the current value to a past value
+example 1: calculate the price change
+To find today's price change, you subtract yesterday's close from today's close.
+yesterday's Close is the Close from one period AGO (-1)
+YesterdaysClose = Ref(Close, -1);
+today's change is Current Close - Yesterday's Close
+PriceChange = Close - YesterdaysClose;
+this is so common it's often written in one line:
+PriceChange = Close - Ref(Close, -1);
+calculate the daily price change
+*/
+DailyChange = Close - Ref(Close, -1); /*today's Close - Yesterday's Close*/
+Plot(DailyChange, "Daily", colorBrown);
+
+/*calculate a percentage band around the close*/
+UpperBand = Close * 1.01; /*1% above close*/
+LowerBand = Close * 0.99; /*1% below close*/
+Plot(UpperBand, "UpperBand", colorBrightGreen);
+Plot(LowerBand, "LowerBand", colorGold);
+
+_SECTION_END();
